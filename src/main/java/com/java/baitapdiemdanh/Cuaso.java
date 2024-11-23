@@ -34,6 +34,10 @@ public class Cuaso extends javax.swing.JFrame implements ActionListener, MouseLi
         initComponents();
         jTable1.setModel(dtm);
         jTable1.setAutoCreateRowSorter(true);
+        jButton1.addActionListener(this);
+        jButton2.addActionListener(this);
+        jButton3.addActionListener(this);
+        jButton4.addActionListener(this);
     }
 
     @Override
@@ -77,6 +81,7 @@ public class Cuaso extends javax.swing.JFrame implements ActionListener, MouseLi
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == jButton1) {
+            System.out.println("Xin chao");
             KetnoiCSDL();
             jScrollPane1.setVisible(true);
             double tb = NapdulieuchoTable();
@@ -158,12 +163,14 @@ public class Cuaso extends javax.swing.JFrame implements ActionListener, MouseLi
 
     private void KetnoiCSDL()
     {
-           String username = "root";
-           String password = "";
-           String connectionURL = "jdbc:mysql://127.0.0.1/my_database";
+           String username = "admin";
+           String password = "admin123";
+           String connectionURL = "jdbc:mysql://127.0.0.1:3307/laravel";
         try {
+            Class.forName("com.mysql.jdbc.Driver");  
            con = DriverManager.getConnection(connectionURL, username, password);
-        } catch (SQLException ex) {
+           st = con.createStatement();
+        } catch (Exception ex) {
             System.out.println(ex);
         }
     }
